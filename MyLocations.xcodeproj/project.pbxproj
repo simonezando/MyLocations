@@ -13,6 +13,10 @@
 		8F4E653C1E3E813600435F21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F4E653A1E3E813600435F21 /* Main.storyboard */; };
 		8F4E653E1E3E813600435F21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F4E653D1E3E813600435F21 /* Assets.xcassets */; };
 		8F4E65411E3E813600435F21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F4E653F1E3E813600435F21 /* LaunchScreen.storyboard */; };
+		8F750DC61E3ECA0200DBC1F9 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F750DC51E3ECA0200DBC1F9 /* LocationDetailsViewController.swift */; };
+		8FA79FBE1E3FC72D006E50F8 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA79FBD1E3FC72D006E50F8 /* Functions.swift */; };
+		8FC75A571E3F92C000FF7C4B /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC75A561E3F92C000FF7C4B /* CategoryPickerViewController.swift */; };
+		8FC75A591E3FBACA00FF7C4B /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC75A581E3FBACA00FF7C4B /* HudView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		8F4E653D1E3E813600435F21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F4E65401E3E813600435F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F4E65421E3E813600435F21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F750DC51E3ECA0200DBC1F9 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
+		8FA79FBD1E3FC72D006E50F8 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		8FC75A561E3F92C000FF7C4B /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		8FC75A581E3FBACA00FF7C4B /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +66,11 @@
 			children = (
 				8F4E65341E3E813600435F21 /* AppDelegate.swift */,
 				8F4E65361E3E813600435F21 /* CurrentLocationViewController.swift */,
+				8F750DC51E3ECA0200DBC1F9 /* LocationDetailsViewController.swift */,
+				8FC75A581E3FBACA00FF7C4B /* HudView.swift */,
+				8FC75A561E3F92C000FF7C4B /* CategoryPickerViewController.swift */,
 				8F4E65381E3E813600435F21 /* SecondViewController.swift */,
+				8FA79FBD1E3FC72D006E50F8 /* Functions.swift */,
 				8F4E653A1E3E813600435F21 /* Main.storyboard */,
 				8F4E653D1E3E813600435F21 /* Assets.xcassets */,
 				8F4E653F1E3E813600435F21 /* LaunchScreen.storyboard */,
@@ -140,8 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F750DC61E3ECA0200DBC1F9 /* LocationDetailsViewController.swift in Sources */,
 				8F4E65391E3E813600435F21 /* SecondViewController.swift in Sources */,
+				8FC75A591E3FBACA00FF7C4B /* HudView.swift in Sources */,
+				8FA79FBE1E3FC72D006E50F8 /* Functions.swift in Sources */,
 				8F4E65351E3E813600435F21 /* AppDelegate.swift in Sources */,
+				8FC75A571E3F92C000FF7C4B /* CategoryPickerViewController.swift in Sources */,
 				8F4E65371E3E813600435F21 /* CurrentLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +320,7 @@
 				8F4E65471E3E813600435F21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
