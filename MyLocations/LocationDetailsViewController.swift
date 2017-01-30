@@ -6,6 +6,7 @@
 //  Copyright © 2017 Bytes-Random L.L.C. All rights reserved.
 //
 
+import CoreData
 import CoreLocation
 import UIKit
 
@@ -28,6 +29,8 @@ class LocationDetailsViewController: UITableViewController {
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var placemark: CLPlacemark?
     var categoryName = "No Category"
+    var date = Date()
+    var managedObjectContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +47,7 @@ class LocationDetailsViewController: UITableViewController {
             addressLabel.text = "No Address Found"
         }
         
-        dateLabel.text = format(date: Date())
+        dateLabel.text = format(date: date)
         
         let gestureRecignizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecignizer.cancelsTouchesInView = false
@@ -94,8 +97,22 @@ class LocationDetailsViewController: UITableViewController {
         let hudView = HudView.hud(inView: navigationController!.view, animated: true)
         hudView.text = "Tagged"
         
-        afterDelay(0.6) { 
-            self.dismiss(animated: true, completion: nil)
+        let location = Location(context: managedObjectContext)
+        location.locationDescription = descriptionTextView.text
+        location.category = categoryName
+        location.latitude = coordinate.latitude
+        location.longitude = coordinate.longitude
+        location.date = date
+        location.placemark = placemark
+        
+        do {
+            try managedObjectContext.save()
+            
+            afterDelay(0.6) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        } catch {
+            fatalCoreDataError(error)
         }
     }
     

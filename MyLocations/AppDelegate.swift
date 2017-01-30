@@ -6,6 +6,7 @@
 //  Copyright © 2017 Bytes-Random L.L.C. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
 @UIApplicationMain
@@ -15,7 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let tabBarController = window!.rootViewController as! UITabBarController
+        if let tabBarViewControllers = tabBarController.viewControllers {
+            let currentLocationViewController = tabBarViewControllers[0] as! CurrentLocationViewController
+            
+            currentLocationViewController.managedObjectContext = managedObjectContext
+        }
+        
+        print(applicationDocumentsDirectory)
+        
+        listenForFatalCoreDataNotifications()
         return true
     }
 
@@ -40,7 +51,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    // MARK: - Core Data
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "DataModel")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error {
+                fatalError("Could not load data store: \(error)")
+            }
+        })
+        return container
+    }()
+    
+    lazy var managedObjectContext: NSManagedObjectContext = self.persistentContainer.viewContext
+    
+    func listenForFatalCoreDataNotifications() {
+        NotificationCenter.default.addObserver(forName: MyManagedObjectContextSaveDidFailNotification, object: nil, queue: OperationQueue.main, using: { notification in
+            
+            let alert = UIAlertController(
+                title: "Internal Error",
+                message: "There was a fatal error in the app and it cannot continue.\n\n"
+                    + "Press OK to terminate the app. Sorry for the inconvenience.",
+                preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "OK", style: .default) { _ in
+                let exception = NSException(name: NSExceptionName.internalInconsistencyException, reason: "Fatal Core Data error", userInfo: nil)
+                exception.raise()
+            }
+            
+            alert.addAction(action)
+            
+            self.viewControllerForShowingAlert().present(alert, animated: true,
+                                                         completion: nil)
+        })
+    }
+    
+    func viewControllerForShowingAlert() -> UIViewController {
+        let rootViewController = self.window!.rootViewController!
+        if let presentedViewController = rootViewController.presentedViewController {
+            return presentedViewController
+        } else {
+            return rootViewController
+        }
+    }
 }
 

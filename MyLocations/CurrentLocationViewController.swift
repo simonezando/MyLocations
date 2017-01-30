@@ -6,6 +6,7 @@
 //  Copyright © 2017 Bytes-Random L.L.C. All rights reserved.
 //
 
+import CoreData
 import CoreLocation
 import UIKit
 
@@ -27,6 +28,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var performingReverseGeocoding = false
     var lastGeocodingError: Error?
     var timer: Timer?
+    var managedObjectContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -255,6 +257,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             
             controller.coordinate = location!.coordinate
             controller.placemark = placemark
+            controller.managedObjectContext = managedObjectContext
         }
     }
 }
