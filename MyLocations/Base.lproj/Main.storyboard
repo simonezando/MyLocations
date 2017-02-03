@@ -169,6 +169,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeH-Bx-LLV">
+                                                    <rect key="frame" x="39" y="-42" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -293,17 +297,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPhotoLabel" destination="yvy-ES-eCE" id="zAp-KZ-iHP"/>
                         <outlet property="addressLabel" destination="r0p-So-GUa" id="akv-Gz-iOb"/>
                         <outlet property="categoryLabel" destination="p6d-Gc-nBF" id="BG8-F1-xeb"/>
                         <outlet property="dateLabel" destination="0mB-c4-gwp" id="auP-5Z-6aV"/>
                         <outlet property="descriptionTextView" destination="1kx-y0-mwN" id="j61-iz-FYS"/>
+                        <outlet property="imageView" destination="EeH-Bx-LLV" id="F4E-Hf-Wwj"/>
                         <outlet property="latitudeLabel" destination="YgA-Ke-pth" id="Sea-w2-E6Q"/>
                         <outlet property="longitudeLabel" destination="Q5l-iy-9ex" id="Fp3-wN-RZ3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ok6-hY-olp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3066" y="334"/>
+            <point key="canvasLocation" x="3065.625" y="333.80281690140845"/>
         </scene>
         <!--Category Picker View Controller-->
         <scene sceneID="140-R6-aLn">
@@ -383,24 +389,29 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQI-1o-a2y">
-                                            <rect key="frame" x="8" y="8" width="304" height="21"/>
+                                            <rect key="frame" x="82" y="8" width="238" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zh8-lP-aul">
-                                            <rect key="frame" x="8" y="27" width="304" height="21"/>
+                                            <rect key="frame" x="82" y="27" width="238" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQp-9e-PBK">
+                                            <rect key="frame" x="15" y="2" width="52" height="52"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="Zh8-lP-aul" id="qdV-sG-eaM"/>
                                     <outlet property="descriptionLabel" destination="JQI-1o-a2y" id="MNG-HG-FWo"/>
+                                    <outlet property="photoImageView" destination="cQp-9e-PBK" id="hKn-2i-lXS"/>
                                     <segue destination="MTG-Y2-ON2" kind="presentation" identifier="EditLocation" id="tyA-AB-2fW"/>
                                 </connections>
                             </tableViewCell>
@@ -509,6 +520,6 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IFz-Ev-8Vc"/>
+        <segue reference="tyA-AB-2fW"/>
     </inferredMetricsTieBreakers>
 </document>
